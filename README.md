@@ -49,7 +49,7 @@ Complete the five TODOs in order.
 
    ```js
    app.get("/api/animals", (req, res) => {
-    // send every animal as JSON
+     // send every animal as JSON
    });
    ```
 
@@ -104,12 +104,12 @@ Vite can **forward** those requests for you. In `vite.config.js`, add a
 
 ```js
 export default defineConfig({
- plugins: [vue()],
- server: {
-  proxy: {
-   "/api": "http://localhost:3000",
+  plugins: [vue()],
+  server: {
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
- },
 });
 ```
 
@@ -124,16 +124,16 @@ and run `npm run dev` again.
 2. **Delete `public/animals.json`.** The server owns the animals now.
 
 **Adopt** and **Return** still change only the browser's copy of the
-animals; the server doesn't know about them. 
+animals; the server doesn't know about them.
 
 ### TODO 5: Write your reflections
 
 Add a section to the top of this `README.md` file, above the title, titled
 `Reflections`. Please, please, please, write this yourself. Do not use AI in any part of it. Answer these questions - an honest attempt at answering is all I'm looking for. Even if you're wrong, I want you to explain your reasoning.
 
-1. What is the point of separating the app into a client and server component (Vue and Express)? Isn't it simpler to just keep everything in a single place?
-2. How do you think you will use the client/server combination in your final project? Which part will live on the client, and which on the server?
-3. Do you prefer working with Vue or vanilla (basic) JS, and why?
+1. What is the point of separating the app into a client and server component (Vue and Express)? Isn't it simpler to just keep everything in a single place? **The purpose of seperating the app into client and server components is so that way the things that we want the client to see can be on the client-side, and stuff the we don't want the client to see is only able to be viewed privately on the servers end. If you keep things in one place then things could get cluttered and the client would be able to access server info which isn't good.**
+2. How do you think you will use the client/server combination in your final project? Which part will live on the client, and which on the server? **I will have the client only be able to input info shows through the form with requirements on the form. The SQL Dataset will be accesible only on the server as its private info.**
+3. Do you prefer working with Vue or vanilla (basic) JS, and why? **I enjoy working with Vue alot more as it splits up the client and server sides really nicely, and I like how it consolidates JS, HTML, and CSS into app.vue while also making things easier to read.**
 
 ---
 
