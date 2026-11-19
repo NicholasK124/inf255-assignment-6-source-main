@@ -99,15 +99,27 @@ app.get("/api/animals/:id", (req, res) => {
   const id = Number(req.params.id);
   const animal = animals.find((a) => a.id === Number(req.params.id));
   a.id === id;
+
+  if (animals === undefined) {
+    res.status(404).json({ error: "Animal not found" });
+  } else {
+    res.status(200).json(animals);
+  }
 });
 // TODO 3: GET /api/available-animals and GET /api/adopted-animals
-if (animals === undefined) {
-  res.status(404).json({ error: "Animal not found" });
-} else {
-  res.status(200).json(animals);
-}
+app.get("/api/available", (req, res) => {
+  const animal = animals.filter((a) => !a.adopted);
+  res.status(200).json(animal);
+});
+app.get("/api/adopted", (req, res) => {
+  const animal = animals.filter((a) => a.adopted);
+  res.status(200).json(animal);
+});
 // ------------------------------------
 // Start the Server
 // ------------------------------------
 
 // TODO 1: Start listening on the port.
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
+});
